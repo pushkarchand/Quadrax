@@ -1,0 +1,68 @@
+<div class="container">
+  <div class="col-md-4 offset-md-4 signup">
+    <div class="center-form panel">
+      <div class="panel-body">
+        <h2 class="text-center">
+          <span class="fa fa-sign-in"></span>Create New Account
+        </h2>
+
+        <form (ngSubmit)="signupUser()" [formGroup]="form">
+
+          <div class="form-group " [ngClass]="{'has-error':form.controls.name.invalid && form.controls.name.touched,'has-success':form.controls.name.valid && form.controls.name.touched}">
+            <label for="name" class="control-label title">*Name</label>
+            <input class="form-control input-sm" type="text" name="name" placeholder="Name" autofocus="" required
+              formControlName="name">
+            <span class="help-block " *ngIf="form.controls.name.invalid && form.controls.name.touched ">Name
+              is Required</span>
+          </div>
+
+          <div class="form-group  " [ngClass]="{'has-error':form.controls.emailAddress.invalid && form.controls.emailAddress.touched,'has-success':form.controls.emailAddress.valid && form.controls.emailAddress.touched}">
+            <label for="emailAddress " class="control-label title">*EmailAddress</label>
+            <input class="form-control input-sm" spellcheck="false" type="email" name="emailAddress" placeholder="Email"
+              required formControlName="emailAddress">
+            <!--<span class="help-block" *ngIf="form.controls.emailAddress.invalid && form.controls.emailAddress.touched ">emailAddress is Required</span>-->
+            <span *ngIf="form.controls.emailAddress.invalid && form.controls.emailAddress.touched" class="help-block">
+              Email is required
+            </span>
+          </div>
+
+
+          <div class="form-group " [ngClass]="{'has-error':form.controls.contactNumber.invalid && form.controls.contactNumber.touched,'has-success':form.controls.contactNumber.valid && form.controls.contactNumber.touched}">
+            <label for="contactNumber" class="control-label title">*Mobile Number</label>
+            <input type="text" Numberonly class="form-control input-sm " name="contactNumber" placeholder="Mobile number"
+              required formControlName="contactNumber">
+            <span class="help-block " *ngIf="form.controls.contactNumber.invalid && form.controls.contactNumber.touched ">Mobile
+              number is Required</span>
+          </div>
+
+          <div class="form-group " [ngClass]="{'has-error':form.controls.password.invalid && form.controls.password.touched,'has-success':form.controls.password.valid && form.controls.password.touched}">
+            <label for="sorceOfIntrest" class="control-label title">*Password</label>
+            <input type="password" class="form-control input-sm " name="password" placeholder="Password" required
+              formControlName="password">
+            <span class="help-block " *ngIf="form.controls.password.invalid && form.controls.password.touched ">Password
+              is Required</span>
+          </div>
+
+          <div class="form-group " [ngClass]="{'has-error':form.controls.confirm.invalid && form.controls.confirm.touched,'has-success':form.controls.confirm.valid && form.controls.confirm.touched}">
+            <label for="sorceOfIntrest" class="control-label title">*Confirm</label>
+            <input type="password" class="form-control input-sm " name="confirm" placeholder="confirm" required
+              formControlName="confirm" (keyup)="handleChangeInPassword()">
+            <span class="help-block " *ngIf="form.controls.confirm.invalid && form.controls.confirm.touched ">confirm
+              password is Required</span>
+            <!-- <span class="help-block " *ngIf="passwordMatching">Password is not matching</span> -->
+          </div>
+
+
+          <div class="form-group ">
+
+            <button id="signupbutton" type="submit" style="font-weight:normal" class="btn btn-block btn-primary btn-lg "
+              [disabled]="form.invalid" title="Signup">
+              Sign up
+            </button>
+            <!-- {{form.invalid}}{{passwordMatching}} {{form.invalid&&passwordMatching}} -->
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

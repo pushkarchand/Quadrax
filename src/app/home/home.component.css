@@ -1,0 +1,12 @@
+label{
+    padding: 10px;
+    display: table;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.invalidSelect{
+    border:1px solid red;
+}

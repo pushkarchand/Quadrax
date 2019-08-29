@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="alert alert-danger" *ngIf="errormessage!==''" style="text-align:center;">
+    <!-- <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> -->
+    <strong>{{errormessage}}</strong>
+  </div>
+  <div class="col-md-4 offset-md-4 signin">
+    <div class="center-form panel">
+      <div class="panel-body">
+        <h2 class="text-center">
+          <h3 style="text-transform:uppercase;">{{company}}</h3>
+          <span class="fa fa-sign-in"></span> Login</h2>
+
+
+        <!-- LOGIN FORM -->
+        <form (ngSubmit)="loginUser()" [formGroup]="form">
+
+          <div class="form-group " [ngClass]="{'has-error':form.controls.emailId.invalid && form.controls.emailId.touched,'has-success':form.controls.emailId.valid && form.controls.emailId.touched}">
+            <label for="emailId" class="control-label title">*Email Address</label>
+            <input type="email" class="form-control " name="emailId" placeholder="Email Address" spellcheck="false"
+              autofocus formControlName="emailId" required>
+            <span class="help-block " *ngIf="form.controls.emailId.invalid && form.controls.emailId.touched ">EmailId
+              is Required</span>
+          </div>
+
+          <div class="form-group " [ngClass]="{'has-error':form.controls.password.invalid && form.controls.password.touched,'has-success':form.controls.password.valid && form.controls.password.touched}">
+            <label for="password" class="control-label title">*Password</label>
+            <input type="password" class="form-control " name="password" placeholder="Password" spellcheck="false"
+              formControlName="password">
+            <span class="help-block " *ngIf="form.controls.password.invalid && form.controls.password.touched">Password
+              is Required</span>
+          </div>
+
+          <div class="form-group ">
+            <button id="loginbutton" type="submit" class="btn btn-primary btn-block" title="login" [disabled]="form.invalid">Login</button>
+          </div>
+        </form>
+        <hr>
+
+
+        <span style="float:right;"><a (click)="userForgotPassword()" *ngIf="errormessage">Forgot Password?</a></span>
+        <span><a routerLink="/signup">Create Account</a></span>
+
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,32 @@
+<div class="container">
+
+  <div class="alert alert-danger" *ngIf="errormessage!==''" style="text-align:center;">
+    <strong>{{errormessage}}</strong>
+  </div>
+  <div class="alert alert-success" *ngIf="successmessage!==''" style="text-align:center;">
+    <strong>{{successmessage}}</strong>
+  </div>
+
+  <h3>File Upload</h3>
+  <label id="#bb" class="btn btn-sm btn-primary" style="padding:7px;">
+    <i class="fa fa-file"></i> Choose Image
+    <input multiple accept="image/png,image/jpeg" type="file" #file id="file" (change)="handleFileInput($event.target.files,file)" />
+  </label>
+
+  <table class="table">
+    <tr>
+      <th>Sl no.</th>
+      <th>File name</th>
+      <th>File Type</th>
+      <th>File Size(Kb)</th>
+      <th>Upload <button class="btn btn-xs btn-primary" (click)="UploadAllfile()">Upload All file</button> </th>
+    </tr>
+    <tr *ngFor="let file of files;let i=index;">
+      <td>{{i+1}}.</td>
+      <td>{{file.name}}</td>
+      <td>{{file.type}}</td>
+      <td>{{file.size/1024}}</td>
+      <td><button class="btn btn-xs btn-primary" (click)="Uploadfile(i)">Upload file</button></td>
+    </tr>
+  </table>
+</div>
